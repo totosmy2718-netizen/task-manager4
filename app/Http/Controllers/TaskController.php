@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TaskRequest;
 use App\Models\Category;
 use App\Models\Task;
+use Illuminate\Http\Request;
+
 
 class TaskController extends Controller
 {
@@ -98,5 +100,17 @@ class TaskController extends Controller
 
         return redirect()->route('tasks.index')
             ->with('success', 'タスクを削除しました。');
+    }
+
+    /**
+     * 検索フォーム
+     */
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+        $tasks = Task::where('user_id', auth()->id())
+            ->search($keyword)
+            ->get();
+        return view('tasks.index', compact('tasks'));
     }
 }

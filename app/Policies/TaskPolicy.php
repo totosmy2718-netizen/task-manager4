@@ -30,4 +30,13 @@ class TaskPolicy
     {
         return $user->id === $task->user_id;
     }
+
+    /**
+     * タスクを検索できるか
+     */
+    public function search(User $user): bool
+    {
+        return true;
+    }
+
 }

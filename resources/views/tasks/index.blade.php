@@ -9,6 +9,16 @@
                 新規登録
             </a>
         </div>
+        {{-- 検索フォーム --}}
+        <div class="mb-6">
+            <form class="search-form" action="/tasks/search" method="get">
+                <input class="search-form border border-gray-200 rounded-md px-3 py-2" type="text" name="keyword"
+                    value="{{ request('keyword') }}" placeholder="タスクを検索">
+                <button type="submit" class="mt-2 bg-rose-400 hover:bg-rose-500 text-white px-4 py-2 rounded-md">
+                    検索
+                </button>
+            </form>
+        </div>
 
         {{-- タスクリスト --}}
         @forelse($tasks as $task)
@@ -26,10 +36,10 @@
                         <div class="flex items-center mt-2">
                             {{-- 優先度表示 --}}
                             <span class="px-2 py-1 text-xs rounded 
-                                        @if($task->priority === 3) bg-red-100 text-red-800
-                                        @elseif($task->priority === 2) bg-yellow-100 text-yellow-800
-                                        @else bg-green-100 text-green-800
-                                        @endif">
+                                                                    @if($task->priority === 3) bg-red-100 text-red-800
+                                                                    @elseif($task->priority === 2) bg-yellow-100 text-yellow-800
+                                                                    @else bg-green-100 text-green-800
+                                                                    @endif">
                                 @if($task->priority === 3) 高
                                 @elseif($task->priority === 2) 中
                                 @else 低

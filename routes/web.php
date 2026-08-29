@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect()->route('login');
 });
+//検索フォームのルート
+Route::get('/tasks/search', [TaskController::class, 'search']);
 
 // 認証が必要なルート
 Route::middleware('auth')->group(function () {
@@ -15,4 +17,6 @@ Route::middleware('auth')->group(function () {
 
     // タスクのCRUDルート（仮ルートから置き換え）
     Route::resource('tasks', TaskController::class);
+
+
 });
