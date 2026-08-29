@@ -113,4 +113,23 @@ class TaskController extends Controller
             ->get();
         return view('tasks.index', compact('tasks'));
     }
+
+    /**
+     * CSV出力
+     */
+    public function export()
+    {
+        $tasks = Task::where('user_id', auth()->id())->get();
+
+        $csvData = "ID,タイトル,内容\n";
+
+        foreach ($tasks as $task) {
+            $csvData .= "{$task->id},{$task->title},{$task->description}\n";
+        }
+
+        return response($csvData)
+            ->header('Content-Type', 'text/csv')
+            ->header('Content-Disposition', 'attachment; filename="tasks.csv"');
+    }
+
 }
