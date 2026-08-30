@@ -3,6 +3,7 @@
 COACHTECH課題のタスク管理アプリです。
 タスクの登録、一覧の表示、更新、削除ができます。
 カテゴリの登録、一覧の表示、更新、削除も可能です。
+また、キーワード検索やCSV出力も追加しました。
 
 ## 作成者
 
@@ -73,7 +74,7 @@ Laravel Sailを使用してLaravel、MySQLなどの開発環境を構築して�
 1. **リポジトリをクローン**
 
 ```bash
-$ git clone https://github.com/totosmy2718-netizen/task-manager3
+$ git clone https://github.com/totosmy2718-netizen/task-manager4
 ```
 
 2. **.envファイルの準備**

@@ -117,9 +117,13 @@ class TaskController extends Controller
     /**
      * CSV出力
      */
-    public function export()
+    public function export(Request $request)
     {
-        $tasks = Task::where('user_id', auth()->id())->get();
+        $keyword = $request->input('keyword');
+
+        $tasks = Task::where('user_id', auth()->id())
+            ->search($keyword)
+            ->get();
 
         $csvData = "ID,タイトル,内容\n";
 

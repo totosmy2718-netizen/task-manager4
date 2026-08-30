@@ -7,10 +7,11 @@
             <h1 class="text-2xl font-bold text-gray-800">タスク一覧</h1>
 
             <div class="flex gap-2">
-                <a href="{{ route('tasks.export') }}"
+                <a href="{{ route('tasks.export', ['keyword' => request('keyword')]) }}"
                     class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded">
                     エクスポート
                 </a>
+
 
                 <a href="{{ route('tasks.create') }}"
                     class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
@@ -45,10 +46,10 @@
                         <div class="flex items-center mt-2">
                             {{-- 優先度表示 --}}
                             <span class="px-2 py-1 text-xs rounded 
-                                                                        @if($task->priority === 3) bg-red-100 text-red-800
-                                                                        @elseif($task->priority === 2) bg-yellow-100 text-yellow-800
-                                                                        @else bg-green-100 text-green-800
-                                                                        @endif">
+                                                                            @if($task->priority === 3) bg-red-100 text-red-800
+                                                                            @elseif($task->priority === 2) bg-yellow-100 text-yellow-800
+                                                                            @else bg-green-100 text-green-800
+                                                                            @endif">
                                 @if($task->priority === 3) 高
                                 @elseif($task->priority === 2) 中
                                 @else 低
