@@ -125,10 +125,10 @@ class TaskController extends Controller
             ->search($keyword)
             ->get();
 
-        $csvData = "ID,タイトル,内容\n";
+        $csvData = "ID,タイトル,内容,優先度\n";
 
         foreach ($tasks as $task) {
-            $csvData .= "{$task->id},{$task->title},{$task->description}\n";
+            $csvData .= "{$task->id},{$task->title},{$task->description},{$task->priority}\n";
         }
 
         return response($csvData)

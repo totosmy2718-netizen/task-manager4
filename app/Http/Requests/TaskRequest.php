@@ -24,6 +24,7 @@ class TaskRequest extends FormRequest
             'title' => 'required|string|max:255',
             'description' => 'nullable|string|max:1000',
             'priority' => 'required|integer|in:1,2,3',
+            'status' => 'required|in:todo,doing,done',
         ];
     }
 
@@ -40,6 +41,8 @@ class TaskRequest extends FormRequest
             'description.max' => '説明は1000文字以内で入力してください。',
             'priority.required' => '優先度を選択してください。',
             'priority.in' => '優先度は1〜3の値を選択してください。',
+            'status.required' => 'ステータスを選択してください。',
+            'status.in' => 'ステータスが不正です。',
         ];
     }
 }

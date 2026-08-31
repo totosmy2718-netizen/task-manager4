@@ -43,19 +43,47 @@
                         <p class="text-gray-600 text-sm mt-1">
                             カテゴリー: {{ $task->category->name ?? '未分類' }}
                         </p>
-                        <div class="flex items-center mt-2">
-                            {{-- 優先度表示 --}}
-                            <span class="px-2 py-1 text-xs rounded 
-                                                                            @if($task->priority === 3) bg-red-100 text-red-800
-                                                                            @elseif($task->priority === 2) bg-yellow-100 text-yellow-800
-                                                                            @else bg-green-100 text-green-800
-                                                                            @endif">
-                                @if($task->priority === 3) 高
-                                @elseif($task->priority === 2) 中
-                                @else 低
+                        <div class="flex items-center mt-2 gap-4">
+
+                            {{-- 優先度 --}}
+                            <span class="px-2 py-1 text-xs rounded
+                        @if($task->priority === 3)
+                            bg-red-100 text-red-800
+                        @elseif($task->priority === 2)
+                            bg-yellow-100 text-yellow-800
+                        @else
+                            bg-green-100 text-green-800
+                        @endif">
+
+                                優先度：
+                                @if($task->priority === 3)
+                                    高
+                                @elseif($task->priority === 2)
+                                    中
+                                @else
+                                    低
                                 @endif
                             </span>
+
+                            {{-- ステータス --}}
+                            <p class="text-sm text-gray-600">
+                                ステータス：
+                                @if($task->status === 'todo')
+                                    未着手
+                                @elseif($task->status === 'doing')
+                                    進行中
+                                @else
+                                    完了
+                                @endif
+                            </p>
+
+                            {{-- 進捗率 --}}
+                            <p class="text-sm text-gray-600">
+                                進捗率：{{ $task->progress }}%
+                            </p>
+
                         </div>
+
                     </div>
                     <a href="{{ route('tasks.edit', $task) }}"
                         class="bg-gray-500 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm">

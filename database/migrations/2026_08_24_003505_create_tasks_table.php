@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->string('title');
             $table->text('description')->nullable();
             $table->unsignedTinyInteger('priority')->default(2);
+            $table->string('status')->default('todo');
             $table->timestamps();
         });
     }

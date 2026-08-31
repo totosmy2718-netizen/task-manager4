@@ -21,6 +21,7 @@ class Task extends Model
         'title',
         'description',
         'priority',
+        'status',
     ];
 
     /**
@@ -48,6 +49,17 @@ class Task extends Model
             1 => '低',
             2 => '中',
             default => '高',
+        };
+    }
+
+    //ステータスのラベルを取得
+    public function getProgressAttribute()
+    {
+        return match ($this->status) {
+            'todo' => 0,
+            'doing' => 50,
+            'done' => 100,
+            default => 0,
         };
     }
 
